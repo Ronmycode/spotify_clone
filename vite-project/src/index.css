@@ -1,7 +1,15 @@
 :root {
-  --Black: #000000;
+  --background: #121212;
+  --pink: #ffcdd2;
+}
+* {
+  margin: 0;
+  box-sizing: border-box;
 }
 
 body {
-  background-color: var(--Black);
+  background-color: var(--background);
+}
+.btn {
+  border-radius: 15px;
 }
