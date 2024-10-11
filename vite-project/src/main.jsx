@@ -8,13 +8,23 @@ import NabBar from "./Components/NabBar.jsx";
 import "./Components/NabBar.css";
 import BannerAdd from "./Components/BannerAdd.jsx";
 import "./Components/BannerAdd.css";
-BannerAdd;
+import CardList from "./Components/CardList.jsx";
+import popularRadio from "./assets/popularRadio.json";
+import "./Components/CardList.css";
+import spotifyPlaylists from "./assets/spotifyPlaylists.json";
+import featuredCharts from "./assets/featuredCharts.json";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
     <App />
     <NabBar />
     <BannerAdd />
-    <TrackBar />
+    <CardList listTitle={popularRadio.listTitle} list={popularRadio.list} />
+    <CardList listTitle={featuredCharts.listTitle} list={featuredCharts.list} />
+    <CardList
+      listTitle={spotifyPlaylists.listTitle}
+      list={spotifyPlaylists.list}
+    />
+    {/* <TrackBar /> */}
   </StrictMode>
 );

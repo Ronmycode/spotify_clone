@@ -1,0 +1,25 @@
+{
+  "listTitle": "Popular Radio",
+  "list": [
+    {
+      "title": "Mana Radio",
+      "img": "https://res.cloudinary.com/dymsokiwr/image/upload/v1728619495/mana_radio_p6azgv.jpg"
+    },
+    {
+      "title": "Don Omar Radio",
+      "img": "https://res.cloudinary.com/dymsokiwr/image/upload/v1728619495/donOMar_radio_sat5zw.jpg"
+    },
+    {
+      "title": "shakira_radio",
+      "img": "https://res.cloudinary.com/dymsokiwr/image/upload/v1728619495/shakira_radio_pbabr4.jpg"
+    },
+    {
+      "title": "Bruno Mars Radio",
+      "img": "https://res.cloudinary.com/dymsokiwr/image/upload/v1728619495/brunoMars_radio_m0ccoo.jpg"
+    },
+    {
+      "title": "Coldplay Radio",
+      "img": "https://res.cloudinary.com/dymsokiwr/image/upload/v1728619495/coldplay_radio_g0fo3c.jpg"
+    }
+  ]
+}

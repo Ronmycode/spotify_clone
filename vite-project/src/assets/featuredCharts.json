@@ -1,0 +1,25 @@
+{
+  "listTitle": "Featured Charts",
+  "list": [
+    {
+      "title": "Top Songs Global",
+      "img": "https://res.cloudinary.com/dymsokiwr/image/upload/v1728626079/region_global_default_eujw6y.jpg"
+    },
+    {
+      "title": "Top Songs USA",
+      "img": "https://res.cloudinary.com/dymsokiwr/image/upload/v1728626080/region_us_default_havetb.jpg"
+    },
+    {
+      "title": "Viral 50 - USA",
+      "img": "https://res.cloudinary.com/dymsokiwr/image/upload/v1728626080/region_us_default_1_x1mpkm.jpg"
+    },
+    {
+      "title": "Top 50 - Global",
+      "img": "https://res.cloudinary.com/dymsokiwr/image/upload/v1728626078/region_global_default_1_nmfpuk.jpg"
+    },
+    {
+      "title": "Viral 50 - Global",
+      "img": "https://res.cloudinary.com/dymsokiwr/image/upload/v1728626078/region_global_default_1_nmfpuk.jpg"
+    }
+  ]
+}
