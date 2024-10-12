@@ -13,7 +13,12 @@ import popularRadio from "./assets/popularRadio.json";
 import "./Components/CardList.css";
 import spotifyPlaylists from "./assets/spotifyPlaylists.json";
 import featuredCharts from "./assets/featuredCharts.json";
-
+import FooterLinks from "./Components/FooterLinks.jsx";
+import "./Components/FooterLinks.css";
+import ftrCompany from "./assets/ftrCompany.json";
+import ftrSpotifyPlans from "./assets/ftrSpotifyPlans.json";
+import FtrSocials from "./Components/FtrSocial.jsx";
+import "./Components/FtrSocial.css";
 createRoot(document.getElementById("root")).render(
   <StrictMode>
     <App />
@@ -25,6 +30,12 @@ createRoot(document.getElementById("root")).render(
       listTitle={spotifyPlaylists.listTitle}
       list={spotifyPlaylists.list}
     />
+    <FooterLinks linkTitle={ftrCompany.linksTitle} links={ftrCompany.links} />
+    <FooterLinks
+      linkTitle={ftrSpotifyPlans.linksTitle}
+      links={ftrSpotifyPlans.links}
+    />
+    <FtrSocials />
     {/* <TrackBar /> */}
   </StrictMode>
 );

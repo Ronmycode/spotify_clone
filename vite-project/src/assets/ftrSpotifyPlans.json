@@ -1,0 +1,21 @@
+{
+  "linksTitle": "Spotify Plans",
+  "links": [
+    {
+      "title": "Premium Individual",
+      "link": "/PlanIndividual"
+    },
+    {
+      "title": "Premium Duo",
+      "link": "/PlanDuo"
+    },
+    {
+      "title": "Premium Family",
+      "link": "/PlanFamily"
+    },
+    {
+      "title": "Spotify Free",
+      "link": "/PlanFree"
+    }
+  ]
+}

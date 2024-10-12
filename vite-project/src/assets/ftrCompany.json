@@ -1,0 +1,17 @@
+{
+  "linksTitle": "Company",
+  "links": [
+    {
+      "title": "About",
+      "link": "/About"
+    },
+    {
+      "title": "Jobs",
+      "link": "/Jobs"
+    },
+    {
+      "title": "For the Record",
+      "link": "/fortherecord"
+    }
+  ]
+}
