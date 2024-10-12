@@ -6,9 +6,9 @@ function NabBar() {
         alt="Logo"
       />
       <span className="nav-items">
-        <i class="fa-solid fa-magnifying-glass"></i>
+        <i className="fa-solid fa-magnifying-glass"></i>
         <button className="btn">Open App</button>
-        <i class="fa-solid fa-bars"></i>
+        <i className="fa-solid fa-bars"></i>
       </span>
     </nav>
   );
