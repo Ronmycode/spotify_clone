@@ -4,6 +4,7 @@ import "./index.css";
 import Home from "./Pages/Home.jsx";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Signup from "./Pages/Signup.jsx";
+
 const router = createBrowserRouter([
   {
     path: "/",

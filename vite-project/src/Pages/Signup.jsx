@@ -1,10 +1,12 @@
-import React from "react";
-import SsoLinks from "../Components/SsoLinks";
+import SsoLinks from "../Components/SsoLinks.jsx";
 import "../Components/SsoLinks.css";
+import SignUpEmailAddress from "../Components/SignUpEmailAddress.jsx";
+import "../Components/SignUpEmailAddress.css";
 function Signup() {
   return (
     <div>
-      <h1>Signup</h1>
+      <h1>here</h1>
+      <SignUpEmailAddress />
       <SsoLinks />
     </div>
   );

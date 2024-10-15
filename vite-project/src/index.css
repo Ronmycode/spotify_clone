@@ -1,6 +1,7 @@
 :root {
   --background: #121212;
   --pink: #ffcdd2;
+  --green: #1ed760;
 }
 * {
   margin: 0;
@@ -12,4 +13,5 @@ body {
 }
 .btn {
   border-radius: 15px;
+  border: none;
 }
