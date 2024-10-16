@@ -5,7 +5,6 @@ import "../Components/SignUpEmailAddress.css";
 function Signup() {
   return (
     <div>
-      <h1>here</h1>
       <SignUpEmailAddress />
       <SsoLinks />
     </div>

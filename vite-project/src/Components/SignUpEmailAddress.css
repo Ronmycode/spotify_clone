@@ -1,3 +1,15 @@
+.SignUpBanner {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+.SignUpBanner img {
+  max-height: 32px;
+}
+.Email .SignUpBanner p {
+  font-size: 2rem;
+}
+
 .Email {
   font-family: "Work Sans", sans-serif;
   color: white;
