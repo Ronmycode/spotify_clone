@@ -1,0 +1,73 @@
+.App {
+  height: 95vh;
+  position: relative;
+}
+
+.App img {
+  margin: auto;
+  margin-top: 1.5rem;
+}
+.policy {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin-inline: auto;
+  width: fit-content;
+  margin-bottom: 1.5rem;
+
+  color: rgb(166, 166, 166);
+  text-align: center;
+  font-size: 0.75rem;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+}
+
+.policy a {
+  color: rgb(166, 166, 166);
+}
+
+/* Progress bar styles */
+.progress-bar {
+  width: 80%;
+  height: 20px;
+  background-color: #e0e0e0;
+  border-radius: 10px;
+  overflow: hidden;
+  margin: 20px auto;
+}
+
+.progress-bar-fill {
+  height: 100%;
+  background-color: #28a745;
+  width: 0; /* This will be dynamically updated */
+  transition: width 0.3s ease-in-out;
+}
+
+.DOB {
+  display: flex;
+}
+
+.DOB input {
+  margin: 0.5rem;
+}
+
+.DOB .days {
+  width: 3rem;
+}
+
+.DOB .monts {
+  width: 10rem;
+}
+.DOB .years {
+  width: 5rem;
+}
+
+.Gender_top {
+  color: white;
+  display: flex;
+}
+
+input .Gender {
+  flex-direction: row;
+}

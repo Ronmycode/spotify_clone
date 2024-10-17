@@ -3,28 +3,31 @@
   flex-direction: column;
   text-align: center;
 }
-.SignUpBanner img {
+.App img {
   max-height: 32px;
 }
 .Email .SignUpBanner p {
   font-size: 2rem;
 }
 
-.Email {
+.Form {
   font-family: "Work Sans", sans-serif;
   color: white;
   display: flex;
   flex-direction: column;
   padding: 1.5rem;
-  margin: 1rem;
 }
 
-.Email p {
+.Form p {
   font-weight: 700;
   font-size: 0.75rem;
   padding: 1rem 0;
 }
-.Email textarea {
+.Form input {
+  border: solid 1px white;
+  color: white;
+  font-size: 1rem;
+  border-radius: 5px;
   display: flex;
   background-color: black;
   height: 3rem;
@@ -32,12 +35,12 @@
 ::placeholder {
   font-family: "Work Sans", sans-serif;
   font-weight: 500;
-  color: rgb(166, 166, 166);
+  color: white;
   padding: 0.5rem;
   font-size: 1rem;
 }
 
-.Email button {
+.Form button {
   background-color: var(--green);
   padding: 1rem 0;
   border-radius: 3rem;

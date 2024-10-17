@@ -3,7 +3,7 @@ import { createRoot } from "react-dom/client";
 import "./index.css";
 import Home from "./Pages/Home.jsx";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import Signup from "./Pages/Signup.jsx";
+import SignupForm from "./Pages/SignupForm.jsx";
 
 const router = createBrowserRouter([
   {
@@ -11,8 +11,8 @@ const router = createBrowserRouter([
     element: <Home />,
   },
   {
-    path: "/signup",
-    element: <Signup />,
+    path: "/signupForm",
+    element: <SignupForm />,
   },
 ]);
 
