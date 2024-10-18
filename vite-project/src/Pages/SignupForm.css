@@ -28,20 +28,65 @@
 }
 
 /* Progress bar styles */
+.progress-bar-wrapper {
+  display: flex;
+  flex-direction: column;
+}
+.progress-disp {
+  display: flex;
+}
+.progress-disp p {
+  font-weight: 600;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+.progress-disp span {
+  font-weight: 500;
+  font-size: 1rem;
+  color: #b3b3b3;
+}
+
+.progress-disp i {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5rem;
+  padding: 1rem;
+  color: #818181;
+}
+
 .progress-bar {
-  width: 80%;
-  height: 20px;
-  background-color: #e0e0e0;
+  margin: auto;
+  width: 90%;
+  height: 2px;
+  background-color: #818181;
   border-radius: 10px;
   overflow: hidden;
-  margin: 20px auto;
 }
 
 .progress-bar-fill {
   height: 100%;
-  background-color: #28a745;
+  background-color: var(--green);
   width: 0; /* This will be dynamically updated */
   transition: width 0.3s ease-in-out;
+}
+.Form .Form-title {
+  padding: 1rem 0 5px 0;
+}
+.Form .Form-title span {
+  color: #b3b3b3;
+  font-size: 0.8rem;
+  line-height: 1;
+  font-weight: 500;
+  margin-bottom: 0;
+}
+
+.Form .Form-title span a {
+  color: #818181;
+}
+
+.Form .name {
+  border: solid 2px #7c7c7ca9;
 }
 
 .DOB {
@@ -50,6 +95,7 @@
 
 .DOB input {
   margin: 0.5rem;
+  border: solid 2px #7c7c7ca9;
 }
 
 .DOB .days {
@@ -65,9 +111,19 @@
 
 .Gender_top {
   color: white;
-  display: flex;
 }
 
-input .Gender {
-  flex-direction: row;
+.Gender {
+  display: inline-flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+}
+.Gender label {
+  padding: 0.25rem;
+}
+
+.Gender input {
+  background-color: black;
 }

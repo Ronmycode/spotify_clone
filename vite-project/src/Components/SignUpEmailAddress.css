@@ -6,7 +6,7 @@
 .App img {
   max-height: 32px;
 }
-.Email .SignUpBanner p {
+.Form .SignUpBanner p {
   font-size: 2rem;
 }
 
@@ -25,7 +25,7 @@
 }
 .Form input {
   border: solid 1px white;
-  color: white;
+  /*   color: white; */
   font-size: 1rem;
   border-radius: 5px;
   display: flex;
