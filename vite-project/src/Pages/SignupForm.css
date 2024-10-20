@@ -127,3 +127,14 @@
 .Gender input {
   background-color: black;
 }
+
+.error {
+  color: #f3727f;
+  font-weight: 500 !important;
+  font-size: 1rem !important;
+}
+
+.error i {
+  font-size: 1rem;
+  padding-right: 0.25rem;
+}

@@ -10,11 +10,10 @@ function BannerAdd() {
       <p className="description">
         Take control of your listening with ad-free music. Cancel anytime.
       </p>
-      <button className="btn">
-        <Link className="btn" to="/signUpForm">
-          Sign Up
-        </Link>
-      </button>
+
+      <Link className="btn" to="/signUpForm">
+        <button className="btn"> Sign Up</button>
+      </Link>
     </div>
   );
 }

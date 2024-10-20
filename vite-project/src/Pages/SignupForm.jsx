@@ -8,17 +8,19 @@ import { useForm } from "react-hook-form";
 
 /* 1st form */
 function Form1({ onComplete }) {
-  const [inputValue, setInputValue] = useState("");
+  const {
+    register, // To register inputs for tracking
+    handleSubmit, // To handle form submission
+    formState: { errors }, // To track validation errors
+  } = useForm();
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (inputValue) {
-      onComplete(); // Move to the next form
-    }
+  const onSubmit = (data) => {
+    console.log("Form Data:", data);
+    onComplete(); // Move to the next form
   };
 
   return (
-    <form onSubmit={handleSubmit} className="Form">
+    <form onSubmit={handleSubmit(onSubmit)} className="Form">
       <div className="SignUpBanner">
         <p>
           Sign up to
@@ -29,16 +31,27 @@ function Form1({ onComplete }) {
       <p>Email Address</p>
       <input
         type="email"
-        value={inputValue}
-        name="Email Address"
-        id="Email"
         placeholder="name@domain.com"
-        onChange={(e) => setInputValue(e.target.value)}
-      ></input>
+        id="Email"
+        // Use the register function to register this input
+        {...register("email", {
+          required: "Email is required",
+          pattern: {
+            value: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
+            message: "Invalid email address",
+          },
+        })}
+      />
+      {errors.email && (
+        <p className="error">
+          <i class="fa-solid fa-circle-exclamation"></i>
+          {errors.email.message}
+        </p>
+      )}{" "}
+      {/* Display error message if any */}
       <button type="submit" className="btn">
         Next
       </button>
-
       <SsoLinks />
     </form>
   );
@@ -46,19 +59,21 @@ function Form1({ onComplete }) {
 
 /* 2nd Form */
 function Form2({ onComplete, currentForm, totalForms, formName }) {
-  const [inputValue, setInputValue] = useState("");
+  const {
+    register, // To register inputs for tracking
+    handleSubmit, // To handle form submission
+    formState: { errors }, // To track validation errors
+  } = useForm();
 
   const Form2_indication = "Create a password"; //This is the indication that shows under the progress bar for user
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (inputValue) {
-      onComplete(); // Move to the next form
-    }
+  const onSubmit = (data) => {
+    console.log("Form Data:", data);
+    onComplete(); // Move to the next form
   };
 
   return (
-    <form onSubmit={handleSubmit} className="Form">
+    <form onSubmit={handleSubmit(onSubmit)} className="Form">
       <ProgressBar
         currentForm={currentForm}
         totalForms={totalForms}
@@ -66,16 +81,27 @@ function Form2({ onComplete, currentForm, totalForms, formName }) {
       />
       <p>Password</p>
       <input
-        type="password"
-        value={inputValue}
         name="Password"
         id="Password"
-        placeholder=""
-        onChange={(e) => setInputValue(e.target.value)}
-      ></input>
-      <div>
-        <p>Your password must contain at least</p>
-      </div>
+        placeholder="Enter your password"
+        type="password"
+        {...register("Password", {
+          required: "Password is required",
+          pattern: {
+            value: /^(?=.*[A-Za-z])(?=.*[0-9\W]).{10,}$/,
+            message:
+              "Password must contain at least 1 letter 1 number or special character, and be at least 10 characters long",
+          },
+        })}
+      />
+      {errors.Password && (
+        <div className="error">
+          <p>
+            <i class="fa-solid fa-circle-exclamation"></i>
+            {errors.Password.message}
+          </p>
+        </div>
+      )}
       <button type="submit" className="btn">
         Next
       </button>
@@ -86,7 +112,7 @@ function Form2({ onComplete, currentForm, totalForms, formName }) {
 /* 3rd Form */
 function Form3({ onComplete, currentForm, totalForms }) {
   const [inputValue, setInputValue] = useState("");
-  const Form3_indication = "Tell us about yourself"; //This is the indication that shows under the progress bar for user
+  const Form3_indication = "Tell us about yourself"; //direction to user
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -113,7 +139,7 @@ function Form3({ onComplete, currentForm, totalForms }) {
         className="name"
         type="text"
         value={inputValue}
-        name="text"
+        name="gender"
         id="Name"
         placeholder=""
         onChange={(e) => setInputValue(e.target.value)}
@@ -176,7 +202,7 @@ function Form3({ onComplete, currentForm, totalForms }) {
               className="Gender-radio"
               type="radio"
               value={inputValue}
-              name="Man"
+              name="gender"
               id="Man"
               onChange={(e) => setInputValue(e.target.value)}
             ></input>
@@ -190,7 +216,7 @@ function Form3({ onComplete, currentForm, totalForms }) {
               className="gender"
               type="radio"
               value={inputValue}
-              name="Woman"
+              name="gender"
               id="Woman"
               onChange={(e) => setInputValue(e.target.value)}
             ></input>
@@ -202,7 +228,7 @@ function Form3({ onComplete, currentForm, totalForms }) {
               className="gender"
               type="radio"
               value={inputValue}
-              name="Non-binary"
+              name="gender"
               id="Non-binary"
               onChange={(e) => setInputValue(e.target.value)}
             ></input>
