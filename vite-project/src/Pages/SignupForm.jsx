@@ -4,6 +4,7 @@ import "../Components/SignUpEmailAddress.css";
 import "../Components/SsoLInks.css";
 import "./SignupForm.css";
 import React, { useState } from "react";
+import { useForm } from "react-hook-form";
 
 /* 1st form */
 function Form1({ onComplete }) {
