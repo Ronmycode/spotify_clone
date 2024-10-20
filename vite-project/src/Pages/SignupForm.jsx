@@ -110,19 +110,37 @@ function Form2({ onComplete, currentForm, totalForms, formName }) {
 }
 
 /* 3rd Form */
-function Form3({ onComplete, currentForm, totalForms }) {
-  const [inputValue, setInputValue] = useState("");
+function Form3({ onComplete, currentForm, totalForms, formName }) {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
+
   const Form3_indication = "Tell us about yourself"; //direction to user
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (inputValue) {
-      onComplete(); // Complete the form submission
-    }
+  const onSubmit = (data) => {
+    console.log("Form submitted:", data);
+    onComplete(); // Complete the form submission
   };
 
+  const months = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December",
+  ];
+
   return (
-    <form onSubmit={handleSubmit} className="Form">
+    <form onSubmit={handleSubmit(onSubmit)} className="Form">
       <ProgressBar
         currentForm={currentForm}
         totalForms={totalForms}
@@ -137,13 +155,16 @@ function Form3({ onComplete, currentForm, totalForms }) {
 
       <input
         className="name"
+        //value={inputValue}
         type="text"
-        value={inputValue}
-        name="gender"
+        {...register("name", { required: "Name is required" })}
         id="Name"
-        placeholder=""
-        onChange={(e) => setInputValue(e.target.value)}
-      ></input>
+        placeholder="Enter your name"
+      />
+      {errors.name && (
+        <span style={{ color: "red" }}>{errors.name.message}</span>
+      )}
+
       <div className="Gender-section">
         <p className="Form-title">
           Date of birth <br />
@@ -151,43 +172,51 @@ function Form3({ onComplete, currentForm, totalForms }) {
             Why do we need you date of birth? <a href="http://">Learn more</a>
           </span>
         </p>
-
+        {/* days */}
         <div className="DOB">
-          {/* days */}
           <input
             className="days"
             type="text"
-            value={inputValue}
-            name="text"
+            {...register("day", { required: "Day is required" })}
             id="day"
             placeholder="dd"
-            onChange={(e) => setInputValue(e.target.value)}
           ></input>
+          {errors.day && (
+            <span style={{ color: "red" }}>{errors.day.message}</span>
+          )}
 
           {/* Months */}
-          <input
-            className="monts"
-            type="text"
-            value={inputValue}
-            name="text"
+          <select
+            className="months"
+            {...register("month", { required: "Month is required" })}
             id="month"
-            placeholder="Month"
-            onChange={(e) => setInputValue(e.target.value)}
-          ></input>
+          >
+            <option value="" disabled>
+              Select month
+            </option>
+            {months.map((month, index) => (
+              <option key={index} value={month}>
+                {month}
+              </option>
+            ))}
+          </select>
+          {errors.month && (
+            <span style={{ color: "red" }}>{errors.month.message}</span>
+          )}
+          <div />
 
           {/* Years */}
           <input
             className="years"
             type="text"
-            value={inputValue}
-            name="text"
+            {...register("year", { required: "Year is required" })}
             id="year"
             placeholder="yyyy"
-            onChange={(e) => setInputValue(e.target.value)}
-          ></input>
+          />
+          {errors.year && (
+            <span style={{ color: "red" }}>{errors.year.message}</span>
+          )}
         </div>
-
-        {/*This section is set to use raqdio buttons to select the user's Gender */}
         <p className="Form-title">
           Gender <br />
           <span className="Form-subtitle">
@@ -195,42 +224,43 @@ function Form3({ onComplete, currentForm, totalForms }) {
             and ads for you.
           </span>
         </p>
-        {/* male */}
+
+        {/* // male */}
         <div className="Gender_top">
           <div className="Gender">
             <input
               className="Gender-radio"
               type="radio"
-              value={inputValue}
+              /* value={inputValue} */
               name="gender"
               id="Man"
-              onChange={(e) => setInputValue(e.target.value)}
+              /* onChange={(e) => setInputValue(e.target.value)} */
             ></input>
             <label className="Gender-label" htmlFor="Man">
               Man
             </label>
           </div>
-          {/* Woman */}
+          {/* // Woman */}
           <div className="Gender">
             <input
               className="gender"
               type="radio"
-              value={inputValue}
+              /* value={inputValue} */
               name="gender"
               id="Woman"
-              onChange={(e) => setInputValue(e.target.value)}
+              /* onChange={(e) => setInputValue(e.target.value)} */
             ></input>
             <label htmlFor="Woman">Woman</label>
           </div>
-          {/* Non-binary */}
+          {/* // Non-binary */}
           <div className="Gender">
             <input
               className="gender"
               type="radio"
-              value={inputValue}
+              /* value={inputValue} */
               name="gender"
               id="Non-binary"
-              onChange={(e) => setInputValue(e.target.value)}
+              /* onChange={(e) => setInputValue(e.target.value)} */
             ></input>
             <label htmlFor="Non-binary">Non-binary</label>
           </div>
@@ -243,7 +273,7 @@ function Form3({ onComplete, currentForm, totalForms }) {
   );
 }
 
-/* 4th Form */
+// 4th Form
 function Form4({ onComplete }) {
   const [inputValue, setInputValue] = useState("");
 
@@ -338,7 +368,6 @@ function SignupForm() {
           onComplete={goToNextForm}
           currentForm={currentForm}
           totalForms={totalForms}
-          /*  formName={formName} */
         />
       )}
       {currentForm === 4 && (
