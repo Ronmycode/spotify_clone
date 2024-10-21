@@ -91,6 +91,8 @@
 
 .DOB {
   display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .DOB input {
@@ -102,9 +104,13 @@
   width: 3rem;
 }
 
-.DOB .monts {
-  width: 10rem;
+.DOB select {
+  color: white;
+  height: 3rem;
+  border-radius: 5px !important;
+  background-color: #000000;
 }
+
 .DOB .years {
   width: 5rem;
 }
@@ -126,4 +132,31 @@
 
 .Gender input {
   background-color: black;
+}
+
+.error {
+  color: #f3727f;
+  font-weight: 500 !important;
+  font-size: 1rem !important;
+}
+
+.error i {
+  font-size: 1rem;
+  padding-right: 0.25rem;
+}
+
+.ErrorsContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.confirmation-wrapper {
+  height: 50vh;
+  color: var(--green);
+  display: flex;
+  justify-content: center;
+}
+
+.confirmation {
+  margin: auto;
 }

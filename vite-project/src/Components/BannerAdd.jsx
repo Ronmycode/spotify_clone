@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 function BannerAdd() {
   return (
     <div className="BannerAdd">
@@ -8,7 +10,10 @@ function BannerAdd() {
       <p className="description">
         Take control of your listening with ad-free music. Cancel anytime.
       </p>
-      <button className="btn">Get Premium</button>
+
+      <Link className="btn" to="/signUpForm">
+        <button className="btn"> Sign Up</button>
+      </Link>
     </div>
   );
 }

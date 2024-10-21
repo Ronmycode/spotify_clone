@@ -4,20 +4,23 @@ import "../Components/SignUpEmailAddress.css";
 import "../Components/SsoLInks.css";
 import "./SignupForm.css";
 import React, { useState } from "react";
+import { useForm } from "react-hook-form";
 
 /* 1st form */
 function Form1({ onComplete }) {
-  const [inputValue, setInputValue] = useState("");
+  const {
+    register, // To register inputs for tracking
+    handleSubmit, // To handle form submission
+    formState: { errors }, // To track validation errors
+  } = useForm();
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (inputValue) {
-      onComplete(); // Move to the next form
-    }
+  const onSubmit = (data) => {
+    console.log("Form Data:", data);
+    onComplete(); // Move to the next form
   };
 
   return (
-    <form onSubmit={handleSubmit} className="Form">
+    <form onSubmit={handleSubmit(onSubmit)} className="Form">
       <div className="SignUpBanner">
         <p>
           Sign up to
@@ -28,16 +31,27 @@ function Form1({ onComplete }) {
       <p>Email Address</p>
       <input
         type="email"
-        value={inputValue}
-        name="Email Address"
-        id="Email"
         placeholder="name@domain.com"
-        onChange={(e) => setInputValue(e.target.value)}
-      ></input>
+        id="Email"
+        // Use the register function to register this input
+        {...register("email", {
+          required: "Email is required",
+          pattern: {
+            value: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
+            message: "Invalid email address",
+          },
+        })}
+      />
+      {errors.email && (
+        <p className="error">
+          <i class="fa-solid fa-circle-exclamation"></i>
+          {errors.email.message}
+        </p>
+      )}{" "}
+      {/* Display error message if any */}
       <button type="submit" className="btn">
         Next
       </button>
-
       <SsoLinks />
     </form>
   );
@@ -45,19 +59,21 @@ function Form1({ onComplete }) {
 
 /* 2nd Form */
 function Form2({ onComplete, currentForm, totalForms, formName }) {
-  const [inputValue, setInputValue] = useState("");
+  const {
+    register, // To register inputs for tracking
+    handleSubmit, // To handle form submission
+    formState: { errors }, // To track validation errors
+  } = useForm();
 
   const Form2_indication = "Create a password"; //This is the indication that shows under the progress bar for user
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (inputValue) {
-      onComplete(); // Move to the next form
-    }
+  const onSubmit = (data) => {
+    console.log("Form Data:", data);
+    onComplete(); // Move to the next form
   };
 
   return (
-    <form onSubmit={handleSubmit} className="Form">
+    <form onSubmit={handleSubmit(onSubmit)} className="Form">
       <ProgressBar
         currentForm={currentForm}
         totalForms={totalForms}
@@ -65,16 +81,27 @@ function Form2({ onComplete, currentForm, totalForms, formName }) {
       />
       <p>Password</p>
       <input
-        type="password"
-        value={inputValue}
         name="Password"
         id="Password"
-        placeholder=""
-        onChange={(e) => setInputValue(e.target.value)}
-      ></input>
-      <div>
-        <p>Your password must contain at least</p>
-      </div>
+        placeholder="Enter your password"
+        type="password"
+        {...register("Password", {
+          required: "Password is required",
+          pattern: {
+            value: /^(?=.*[A-Za-z])(?=.*[0-9\W]).{10,}$/,
+            message:
+              "Password must contain at least 1 letter 1 number or special character, and be at least 10 characters long",
+          },
+        })}
+      />
+      {errors.Password && (
+        <div className="error">
+          <p>
+            <i class="fa-solid fa-circle-exclamation"></i>
+            {errors.Password.message}
+          </p>
+        </div>
+      )}
       <button type="submit" className="btn">
         Next
       </button>
@@ -83,19 +110,37 @@ function Form2({ onComplete, currentForm, totalForms, formName }) {
 }
 
 /* 3rd Form */
-function Form3({ onComplete, currentForm, totalForms }) {
-  const [inputValue, setInputValue] = useState("");
-  const Form3_indication = "Tell us about yourself"; //This is the indication that shows under the progress bar for user
+function Form3({ onComplete, currentForm, totalForms, formName }) {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (inputValue) {
-      onComplete(); // Complete the form submission
-    }
+  const Form3_indication = "Tell us about yourself"; //direction to user
+
+  const onSubmit = (data) => {
+    console.log("Form submitted:", data);
+    onComplete(); // Complete the form submission
   };
 
+  const months = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December",
+  ];
+
   return (
-    <form onSubmit={handleSubmit} className="Form">
+    <form onSubmit={handleSubmit(onSubmit)} className="Form">
       <ProgressBar
         currentForm={currentForm}
         totalForms={totalForms}
@@ -110,13 +155,19 @@ function Form3({ onComplete, currentForm, totalForms }) {
 
       <input
         className="name"
+        //value={inputValue}
         type="text"
-        value={inputValue}
-        name="text"
+        {...register("name", { required: "Name is required" })}
         id="Name"
-        placeholder=""
-        onChange={(e) => setInputValue(e.target.value)}
-      ></input>
+        placeholder="Enter your name"
+      />
+      {errors.name && (
+        <span className="error">
+          <i className="fa-solid fa-circle-exclamation"></i>
+          {errors.name.message}
+        </span>
+      )}
+
       <div className="Gender-section">
         <p className="Form-title">
           Date of birth <br />
@@ -124,43 +175,78 @@ function Form3({ onComplete, currentForm, totalForms }) {
             Why do we need you date of birth? <a href="http://">Learn more</a>
           </span>
         </p>
-
+        {/* days */}
         <div className="DOB">
-          {/* days */}
           <input
             className="days"
-            type="text"
-            value={inputValue}
-            name="text"
-            id="day"
+            type="number"
+            {...register("day", {
+              required: "Day is required",
+              min: { value: 1, message: "Day must be at least 1" },
+              max: { value: 31, message: "Day cannot be more than 31" },
+            })}
             placeholder="dd"
-            onChange={(e) => setInputValue(e.target.value)}
           ></input>
 
           {/* Months */}
-          <input
-            className="monts"
-            type="text"
-            value={inputValue}
-            name="text"
+          <select
+            className="months"
+            {...register("month", { required: " Month is required" })}
             id="month"
-            placeholder="Month"
-            onChange={(e) => setInputValue(e.target.value)}
-          ></input>
+          >
+            <option value="" disabled>
+              Select month
+            </option>
+            {months.map((month, index) => (
+              <option key={index} value={month}>
+                {month}
+              </option>
+            ))}
+          </select>
+          <div />
 
           {/* Years */}
           <input
             className="years"
-            type="text"
-            value={inputValue}
-            name="text"
-            id="year"
+            type="number"
+            {...register("year", {
+              required: "Year is required",
+              min: { value: 1950, message: "Year must be at least 1950" },
+              max: { value: 2024, message: "Year cannot be more than 2024" },
+            })}
             placeholder="yyyy"
-            onChange={(e) => setInputValue(e.target.value)}
-          ></input>
+          />
         </div>
 
-        {/*This section is set to use raqdio buttons to select the user's Gender */}
+        {/* Error Container */}
+        {/* Day */}
+        <div className="ErrorsContainer">
+          {errors.day && (
+            <span className="error form3">
+              <i className="fa-solid fa-circle-exclamation"></i>
+              {errors.day.message}
+            </span>
+          )}
+
+          {/* Month */}
+
+          {errors.month && (
+            <span className="error">
+              <i className="fa-solid fa-circle-exclamation"></i>
+              {errors.month.message}
+            </span>
+          )}
+
+          {/* Years */}
+
+          {errors.year && (
+            <span className="error">
+              <i className="fa-solid fa-circle-exclamation"></i>
+              {errors.year.message}
+            </span>
+          )}
+        </div>
+
         <p className="Form-title">
           Gender <br />
           <span className="Form-subtitle">
@@ -168,84 +254,61 @@ function Form3({ onComplete, currentForm, totalForms }) {
             and ads for you.
           </span>
         </p>
-        {/* male */}
+
+        {/* // male */}
         <div className="Gender_top">
           <div className="Gender">
             <input
               className="Gender-radio"
               type="radio"
-              value={inputValue}
-              name="Man"
+              /* value={inputValue} */
+              name="gender"
               id="Man"
-              onChange={(e) => setInputValue(e.target.value)}
+              /* onChange={(e) => setInputValue(e.target.value)} */
             ></input>
             <label className="Gender-label" htmlFor="Man">
               Man
             </label>
           </div>
-          {/* Woman */}
+          {/* // Woman */}
           <div className="Gender">
             <input
               className="gender"
               type="radio"
-              value={inputValue}
-              name="Woman"
+              /* value={inputValue} */
+              name="gender"
               id="Woman"
-              onChange={(e) => setInputValue(e.target.value)}
+              /* onChange={(e) => setInputValue(e.target.value)} */
             ></input>
             <label htmlFor="Woman">Woman</label>
           </div>
-          {/* Non-binary */}
+          {/* // Non-binary */}
           <div className="Gender">
             <input
               className="gender"
               type="radio"
-              value={inputValue}
-              name="Non-binary"
+              /* value={inputValue} */
+              name="gender"
               id="Non-binary"
-              onChange={(e) => setInputValue(e.target.value)}
+              /* onChange={(e) => setInputValue(e.target.value)} */
             ></input>
             <label htmlFor="Non-binary">Non-binary</label>
           </div>
         </div>
       </div>
       <button type="submit" className="btn">
-        Next
+        Sign Up
       </button>
     </form>
   );
 }
 
-/* 4th Form */
-function Form4({ onComplete }) {
-  const [inputValue, setInputValue] = useState("");
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (inputValue) {
-      onComplete(); // Move to the next form
-    }
-  };
-
+// 4th Form
+function Form4() {
   return (
-    <form onSubmit={handleSubmit} className="Form">
-      <ProgressBar currentForm={currentForm} totalForms={totalForms} />
-      <p>Password</p>
-      <input
-        type="password"
-        value={inputValue}
-        name="Password"
-        id="Password"
-        placeholder=""
-        onChange={(e) => setInputValue(e.target.value)}
-      ></input>
-      <div>
-        <p>Your password must contain at least</p>
-      </div>
-      <button type="submit" className="btn">
-        Next
-      </button>
-    </form>
+    <div className="confirmation-wrapper">
+      <h1 className="confirmation">Welcome to Spotify</h1>
+    </div>
   );
 }
 
@@ -277,15 +340,15 @@ function ProgressBar({ currentForm, totalForms, formName }) {
 
 function SignupForm() {
   const [currentForm, setCurrentForm] = useState(1);
-  const totalForms = 4; //Total number of form stages
+  const totalForms = 3; //Total number of form stages
 
   const goToNextForm = () => {
     setCurrentForm((prevForm) => prevForm + 1);
   };
-
-  const goToPrevForm = () => {
+  /* back button */
+  /*   const goToPrevForm = () => {
     setCurrentForm((prevForm) => prevForm - 1);
-  };
+  }; */
 
   return (
     <div className="App">
@@ -295,9 +358,6 @@ function SignupForm() {
         alt="Logo"
       ></img>
 
-      {/* #####Progress Bar call###########
-      <ProgressBar currentForm={currentForm} totalForms={totalForms} />
-      #####################*/}
       {currentForm === 1 && <Form1 onComplete={goToNextForm} />}
       {currentForm === 2 && (
         <Form2
@@ -311,7 +371,6 @@ function SignupForm() {
           onComplete={goToNextForm}
           currentForm={currentForm}
           totalForms={totalForms}
-          /*  formName={formName} */
         />
       )}
       {currentForm === 4 && (
