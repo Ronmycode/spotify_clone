@@ -162,7 +162,10 @@ function Form3({ onComplete, currentForm, totalForms, formName }) {
         placeholder="Enter your name"
       />
       {errors.name && (
-        <span style={{ color: "red" }}>{errors.name.message}</span>
+        <span className="error">
+          <i className="fa-solid fa-circle-exclamation"></i>
+          {errors.name.message}
+        </span>
       )}
 
       <div className="Gender-section">
@@ -176,19 +179,19 @@ function Form3({ onComplete, currentForm, totalForms, formName }) {
         <div className="DOB">
           <input
             className="days"
-            type="text"
-            {...register("day", { required: "Day is required" })}
-            id="day"
+            type="number"
+            {...register("day", {
+              required: "Day is required",
+              min: { value: 1, message: "Day must be at least 1" },
+              max: { value: 31, message: "Day cannot be more than 31" },
+            })}
             placeholder="dd"
           ></input>
-          {errors.day && (
-            <span style={{ color: "red" }}>{errors.day.message}</span>
-          )}
 
           {/* Months */}
           <select
             className="months"
-            {...register("month", { required: "Month is required" })}
+            {...register("month", { required: " Month is required" })}
             id="month"
           >
             <option value="" disabled>
@@ -200,23 +203,50 @@ function Form3({ onComplete, currentForm, totalForms, formName }) {
               </option>
             ))}
           </select>
-          {errors.month && (
-            <span style={{ color: "red" }}>{errors.month.message}</span>
-          )}
           <div />
 
           {/* Years */}
           <input
             className="years"
-            type="text"
-            {...register("year", { required: "Year is required" })}
-            id="year"
+            type="number"
+            {...register("year", {
+              required: "Year is required",
+              min: { value: 1950, message: "Year must be at least 1950" },
+              max: { value: 2024, message: "Year cannot be more than 2024" },
+            })}
             placeholder="yyyy"
           />
+        </div>
+
+        {/* Error Container */}
+        {/* Day */}
+        <div className="ErrorsContainer">
+          {errors.day && (
+            <span className="error form3">
+              <i className="fa-solid fa-circle-exclamation"></i>
+              {errors.day.message}
+            </span>
+          )}
+
+          {/* Month */}
+
+          {errors.month && (
+            <span className="error">
+              <i className="fa-solid fa-circle-exclamation"></i>
+              {errors.month.message}
+            </span>
+          )}
+
+          {/* Years */}
+
           {errors.year && (
-            <span style={{ color: "red" }}>{errors.year.message}</span>
+            <span className="error">
+              <i className="fa-solid fa-circle-exclamation"></i>
+              {errors.year.message}
+            </span>
           )}
         </div>
+
         <p className="Form-title">
           Gender <br />
           <span className="Form-subtitle">
@@ -267,42 +297,18 @@ function Form3({ onComplete, currentForm, totalForms, formName }) {
         </div>
       </div>
       <button type="submit" className="btn">
-        Next
+        Sign Up
       </button>
     </form>
   );
 }
 
 // 4th Form
-function Form4({ onComplete }) {
-  const [inputValue, setInputValue] = useState("");
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (inputValue) {
-      onComplete(); // Move to the next form
-    }
-  };
-
+function Form4() {
   return (
-    <form onSubmit={handleSubmit} className="Form">
-      <ProgressBar currentForm={currentForm} totalForms={totalForms} />
-      <p>Password</p>
-      <input
-        type="password"
-        value={inputValue}
-        name="Password"
-        id="Password"
-        placeholder=""
-        onChange={(e) => setInputValue(e.target.value)}
-      ></input>
-      <div>
-        <p>Your password must contain at least</p>
-      </div>
-      <button type="submit" className="btn">
-        Next
-      </button>
-    </form>
+    <div className="confirmation-wrapper">
+      <h1 className="confirmation">Welcome to Spotify</h1>
+    </div>
   );
 }
 
@@ -334,15 +340,15 @@ function ProgressBar({ currentForm, totalForms, formName }) {
 
 function SignupForm() {
   const [currentForm, setCurrentForm] = useState(1);
-  const totalForms = 4; //Total number of form stages
+  const totalForms = 3; //Total number of form stages
 
   const goToNextForm = () => {
     setCurrentForm((prevForm) => prevForm + 1);
   };
-
-  const goToPrevForm = () => {
+  /* back button */
+  /*   const goToPrevForm = () => {
     setCurrentForm((prevForm) => prevForm - 1);
-  };
+  }; */
 
   return (
     <div className="App">
@@ -352,9 +358,6 @@ function SignupForm() {
         alt="Logo"
       ></img>
 
-      {/* #####Progress Bar call###########
-      <ProgressBar currentForm={currentForm} totalForms={totalForms} />
-      #####################*/}
       {currentForm === 1 && <Form1 onComplete={goToNextForm} />}
       {currentForm === 2 && (
         <Form2

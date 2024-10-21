@@ -144,3 +144,19 @@
   font-size: 1rem;
   padding-right: 0.25rem;
 }
+
+.ErrorsContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.confirmation-wrapper {
+  height: 50vh;
+  color: var(--green);
+  display: flex;
+  justify-content: center;
+}
+
+.confirmation {
+  margin: auto;
+}
