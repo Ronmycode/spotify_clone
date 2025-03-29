@@ -4,7 +4,7 @@ function BannerAdd() {
   return (
     <div className="BannerAdd">
       <div className="CloseIcon">
-        <i class="fa-solid fa-xmark"></i>
+        <i className="fa-solid fa-xmark"></i>
       </div>
       <h1 className="title">Get Premium</h1>
       <p className="description">
