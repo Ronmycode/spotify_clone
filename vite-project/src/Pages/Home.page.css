@@ -1,0 +1,147 @@
+:root {
+  --background: #121212;
+  --pink: #ffcdd2;
+  --green: #1ed760;
+}
+* {
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--background);
+}
+.btn {
+  border-radius: 15px;
+  border: none;
+}
+
+/*#### NavBar #####*/
+.NavBar {
+  background-color: black;
+  display: flex;
+  padding: 0.75rem 1rem;
+}
+
+.NavBar img {
+  max-height: 32px;
+}
+
+.NavBar span {
+  color: white;
+  text-align: right;
+}
+.NavBar .nav-items {
+  margin-left: auto; /* Pushes the span to the right */
+  display: flex;
+  align-items: center;
+}
+
+.NavBar .nav-items i {
+  font-size: 1.25rem;
+}
+
+.NavBar span button {
+  border: none;
+  margin: 0 1rem;
+  padding: 0.5rem 1rem;
+  font-weight: 700;
+}
+
+/*#### Banner Add #####*/
+.BannerAdd {
+  background-color: var(--pink);
+  font-family: "Work Sans", sans-serif;
+  padding: 1rem;
+}
+
+.BannerAdd .btn {
+  background-color: black;
+  color: white;
+  padding: 0.5rem 1rem;
+  margin: 0.25rem;
+  font-weight: 600;
+  border: none;
+}
+
+.BannerAdd .description {
+  font-weight: 400;
+  font-size: 1rem;
+  padding: 0.5rem 0;
+}
+
+.CloseIcon {
+  text-align: end;
+  font-size: larger;
+}
+
+/*#### Music List #####*/
+.musicList {
+  font-family: "Work Sans", sans-serif;
+  color: white;
+  margin: 0.5rem;
+}
+
+.musicList h2 {
+  margin: 1.5rem 0 1rem 0.5rem;
+  font-size: 1.25em;
+}
+
+.cardName {
+  display: flex;
+  overflow-x: scroll;
+  overflow-y: hidden;
+  white-space: nowrap;
+
+  /* This removes the scroll bar from the list */
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+.singlecard {
+  display: inline-block;
+  margin: 0.5rem;
+}
+.cardName img {
+  max-width: 10rem;
+  border-radius: 5px;
+}
+
+/*#### Footer Links #####*/
+
+.footerLInks {
+  font-family: "Work Sans", sans-serif;
+  height: 10rem;
+  padding: 1rem;
+  font-size: 1.15rem;
+  font-weight: 500;
+}
+.linkTitle {
+  margin: 1rem 0;
+  color: white;
+}
+.innerlinks {
+  margin: 0.5rem 0;
+}
+.footerLInks a {
+  text-decoration: none;
+  color: white;
+  color: rgb(146, 142, 142);
+}
+
+/*#### Footer Social #####*/
+.ftrSocial {
+  margin: 1rem;
+  padding: 3rem 0;
+}
+.ftrSocial i {
+  font-size: 1rem;
+  padding: 1rem;
+  color: white;
+}
+.ftrSocial .circle {
+  background-color: rgb(45, 43, 43);
+  border-radius: 50%;
+  margin: 0.5rem;
+}

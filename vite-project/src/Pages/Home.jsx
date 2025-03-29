@@ -1,10 +1,9 @@
+import "./Home.page.css";
 import NabBar from "../Components/NabBar.jsx";
 import BannerAdd from "../Components/BannerAdd.jsx";
 import "../Components/NabBar.css";
-import "../Components/BannerAdd.css";
 import CardList from "../Components/CardList.jsx";
 import popularRadio from "../assets/popularRadio.json";
-import "../Components/CardList.css";
 import spotifyPlaylists from "../assets/spotifyPlaylists.json";
 import featuredCharts from "../assets/featuredCharts.json";
 import FooterLinks from "../Components/FooterLinks.jsx";
